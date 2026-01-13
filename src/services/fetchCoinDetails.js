@@ -1,13 +1,13 @@
 import axiosInstance from "../helpers/axiosIntance";
 
-export async function fetchCoinDetails() {
+export async function fecthCoinDetails(id) {
 
     try {
-        const response = await axiosInstance.get(`/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${perPage}&page=${page}`);
+        const response = await axiosInstance.get(`/coins/${id}`);
         return response.data;
 
     } catch (error) {
         console.error('Error');
         return null;
     }
-} 
+};

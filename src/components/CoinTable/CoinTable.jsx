@@ -1,8 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { fecthCoinData } from "../../services/fetchCoinData.js";
-// import { useContext } from "react";
-// import { CurrencyContext } from '../../context/CurrencyContext.js';
 import zustandStore from '../../zustand/zustand.js';
 import {useNavigate } from "react-router-dom";
 
