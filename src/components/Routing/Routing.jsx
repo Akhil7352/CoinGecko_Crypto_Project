@@ -1,31 +1,31 @@
 import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
 import MainLayout from "../../pages/Layout";
+import CustomErrorBoundry from "../ErrorBoundry/ErrorBoundry.jsx";
 
 
 const Home = lazy(() => import('../../pages/Home'))
 const CoinDetailPage = lazy(() => import('../../pages/CoinDetailPage.jsx'))
 
 function Routing() {
-  return (
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
+    return (
 
-        <Route index element={
+        <CustomErrorBoundry>
+                 <Routes>
+            <Route path="/" element={<MainLayout />}>
 
-                 <Home />
-  
-            } />
-        <Route path="details/:coinId" element={
-
+                <Route index element={
+                    <Home />
+                } />
+                <Route path="details/:coinId" element={
                     <CoinDetailPage />
+                } />
 
-            
-            } />
-
-      </Route>
-    </Routes>
-  );
+            </Route>
+        </Routes>
+        </CustomErrorBoundry>
+       
+    );
 }
 
 export default Routing;
