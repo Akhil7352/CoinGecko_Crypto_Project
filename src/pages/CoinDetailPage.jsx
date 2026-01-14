@@ -2,8 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { fecthCoinDetails } from '../services/fetchCoinDetails';
 import parse from 'html-react-parser';
-import Zustand from "../zustand/zustand"
 import zustandStore from "../zustand/zustand";
+import PageLoader from "../components/PageLoader/PageLoader"
+
+
 
 function CoinDetailPage() {
 
@@ -18,7 +20,7 @@ function CoinDetailPage() {
         staleTime: 2 * 60 * 1000,
     });
 
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) return <PageLoader/>;
     if (isError) return <div>Error: Something went wrong</div>;
 
     return (

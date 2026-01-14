@@ -3,6 +3,7 @@ import { useState } from "react";
 import { fecthCoinData } from "../../services/fetchCoinData.js";
 import zustandStore from '../../zustand/zustand.js';
 import {useNavigate } from "react-router-dom";
+import PageLoader from "../PageLoader/PageLoader.jsx"
 
 
 
@@ -29,6 +30,9 @@ function CoinTable() {
     if (isError) {
         return <div> Error: {error.message} </div>
     };
+    if (isLoading){
+        return <PageLoader />
+    }
 
     return (
         <>
@@ -51,7 +55,7 @@ function CoinTable() {
                 </div>
 
                 <div className="flex flex-col w-[80vw] mx-auto">
-                    {isLoading && <div>Loading...</div>}
+                    {isLoading && <PageLoader/>}
                     {data && data.map((coin) => {
                         return (
                             <div onClick={() => handleCoinRedirect(coin.id)} key={coin.id} 
